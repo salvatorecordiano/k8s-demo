@@ -1,0 +1,9 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: k8s-demo-service
+spec:
+  selector:
+    app: k8s-demo
+  ports:
+    - port: 5678

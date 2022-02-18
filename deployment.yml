@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-demo-deployment
+  labels:
+    app: k8s-demo
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: k8s-demo
+  template:
+    metadata:
+      labels:
+        app: k8s-demo
+    spec:
+      containers:
+        - name: k8s-demo-container
+          image: hashicorp/http-echo
+          args:
+            - "-text=shark"
+          ports:
+            - containerPort: 5678
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "10m"
+            limits:
+              memory: "32Mi"
+              cpu: "50m"

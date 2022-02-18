@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-demo-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: k8s-demo.k8s-facile.it
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: k8s-demo-service
+              servicePort: 5678
+  tls:
+    - hosts:
+        - k8s-demo.k8s-facile.it
