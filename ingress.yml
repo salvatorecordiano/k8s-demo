@@ -6,7 +6,7 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: k8s-demo.k8s-facile.it
+    - host: k8s-demo.cordiano.it
       http:
         paths:
           - path: /
@@ -15,4 +15,4 @@ spec:
               servicePort: 5678
   tls:
     - hosts:
-        - k8s-demo.k8s-facile.it
+        - k8s-demo.cordiano.it
